@@ -1,5 +1,6 @@
 package com.helpdesk.api.service;
 
+import com.helpdesk.api.exception.ResourceNotFoundException;
 import com.helpdesk.api.model.Usuario;
 import com.helpdesk.api.repository.UsuarioRepository;
 import org.slf4j.Logger;
@@ -33,6 +34,6 @@ public class UsuarioService {
     public Usuario listarPorId(Long id){
         log.info("Listando usuario por ID={}", id);
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuario nao encontrado com ID=" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario nao encontrado com ID=" + id));
     }
 }
